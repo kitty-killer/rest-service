@@ -1,5 +1,6 @@
 package com.verwee.CoffeeShop.service.impl;
 
+import com.verwee.CoffeeShop.model.Buyers;
 import com.verwee.CoffeeShop.model.Goods;
 import com.verwee.CoffeeShop.repository.GoodsRepository;
 import com.verwee.CoffeeShop.service.GoodsService;
@@ -43,7 +44,10 @@ public class GoodsServiceImpl implements GoodsService {
                 .max(Comparator.comparingInt(Goods::getQuantity))
                 .orElse(null);
     }
-
+    @Override
+    public List<Goods> findByBuyer(Buyers buyer) {
+        return goodsRepository.findByBuyer(buyer);
+    }
     @Override
     public List<Goods> findGoodsWithLowStock(int threshold) {
         return goodsRepository.findAll()

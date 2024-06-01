@@ -1,14 +1,18 @@
 package com.verwee.CoffeeShop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "baristas")
 public class Barista {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer Id;
 
     @Column(unique = true)
@@ -17,5 +21,8 @@ public class Barista {
     private String FIO;
 
     private String job_tittle;
+    @OneToMany(mappedBy = "barista")
+    @JsonIgnore
+    private List<Goods> goodsList;
 
 }

@@ -20,14 +20,12 @@ public abstract class AbstractController<T> {
         getService().save(entity);
         return "Данные успешно сохранены!";
     }
-
     @PutMapping("update")
     public T update(@RequestBody T entity) {
 
         String s = "Данные обнавлены";
         return getService().update(entity);
     }
-
     @DeleteMapping("delete/{id}")
     public String deleteById(@PathVariable ("id") int id) {
 

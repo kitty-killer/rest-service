@@ -7,13 +7,17 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class BuyersServiceImpl implements BuyersService {
 
     private final BuyersRepository buyersRepository;
-
+    @Override
+    public Optional<Buyers> findById(Integer id) {
+        return buyersRepository.findById(id);
+    }
     @Override
     public List<Buyers> findAll() {
         return buyersRepository.findAll();

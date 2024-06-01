@@ -3,7 +3,10 @@ package com.verwee.CoffeeShop.controller;
 import com.verwee.CoffeeShop.model.Goods;
 import com.verwee.CoffeeShop.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -22,12 +25,10 @@ public class GoodsController extends AbstractController<Goods> {
     protected GoodsService getService() {
         return goodsService;
     }
-
     @GetMapping("/most-popular")
     public Goods findMostPopular() {
         return goodsService.findMostPopular();
     }
-
     @GetMapping("/low-stock")
     public List<Goods> findGoodsWithLowStock(@RequestParam int threshold) {
         return goodsService.findGoodsWithLowStock(threshold);

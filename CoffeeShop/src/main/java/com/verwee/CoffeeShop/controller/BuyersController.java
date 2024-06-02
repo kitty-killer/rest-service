@@ -26,8 +26,12 @@ public class BuyersController extends AbstractController<Buyers> {
     }
 
     @GetMapping("/phone/{phoneNumber}")
-    public Buyers findByPhoneNumber(@PathVariable String phoneNumber) {
-        return buyersService.findByPhoneNumber(phoneNumber);
+    public ResponseEntity<Buyers> findByPhoneNumber(@PathVariable String phoneNumber) {
+        Buyers buyer = buyersService.findByPhoneNumber(phoneNumber);
+        if (buyer == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(buyer);
     }
 
     @GetMapping("/{buyerId}/popular-item")
@@ -61,12 +65,17 @@ public class BuyersController extends AbstractController<Buyers> {
     }
 
     @GetMapping("/top-buyers")
-    public List<Buyers> findTopBuyers(@RequestParam int threshold) {
-        //  топ-покупатели - это те, у кого скидка выше заданного порога
-        return buyersService.findAll()
+    public ResponseEntity<List<Buyers>> findTopBuyers(@RequestParam int threshold) {
+        List<Buyers> topBuyers = buyersService.findAll()
                 .stream()
                 .filter(buyer -> buyer.getSale() > threshold)
                 .collect(Collectors.toList());
+
+        if (topBuyers.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(topBuyers);
     }
     @GetMapping("/total-sales")
     public int getTotalSales() {

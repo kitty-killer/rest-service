@@ -4,6 +4,7 @@ import com.verwee.CoffeeShop.model.Menu;
 import com.verwee.CoffeeShop.service.AbstractService;
 import com.verwee.CoffeeShop.service.MenuService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,13 @@ public class MenuController extends AbstractController<Menu> {
     }
 
     @GetMapping("/position/{positionName}")
-    public Menu findByPositionName(@PathVariable String positionName) {
-        return menuService.findByPositionName(positionName);
+    public ResponseEntity<Menu> findByPositionName(@PathVariable String positionName) {
+        Menu menu = menuService.findByPositionName(positionName);
+
+        if (menu == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(menu);
     }
 }

@@ -8,6 +8,7 @@ public class SpringCoffeeShopApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringCoffeeShopApplication.class, args);
+
 	}
 
 }

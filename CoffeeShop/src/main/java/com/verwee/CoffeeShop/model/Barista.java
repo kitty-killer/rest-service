@@ -19,7 +19,7 @@ public class Barista {
     private String email;
 
     
-    private Integer sallary;// добавление нового поля в бд о зарплате баристы 
+    private Integer sallary;// добавление нового поля в бд о зарплате баристы !
 
     private String FIO;
 

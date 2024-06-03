@@ -18,6 +18,9 @@ public class Barista {
     @Column(unique = true)
     private String email;
 
+    
+    private Integer sallary;// добавление нового поля в бд о зарплате баристы 
+
     private String FIO;
 
     private String job_tittle;

@@ -75,4 +75,4 @@ This project is licensed under the [MIT License](LICENSE). Feel free to use and 
 
 ---
 
-Thank you for your interest in the "Verwee" Coffee Shop RESTful service. If you have any questions or need further assistance, please contact us at [support@verwee.com](mailto:support@verwee.com).
+Thank you for your interest in the "Verwee" Coffee Shop RESTful service. If you have any questions or need further assistance, please contact us at [support@verwee.com](mailto:awerhovskaya@gmail.com).
